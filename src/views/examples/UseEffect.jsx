@@ -26,7 +26,7 @@ const UseEffect = (props) => {
             <SectionTitle title="#03 - Input number com fatorial" />
             <div>
                 <span className="text">Fatorial:</span>
-                <span className="text red">{fatorial}</span>
+                <span className="text red">{fatorial === -1 ? 'Não existe' : fatorial}</span>
             </div>
             <input type="number" className="input"
             onChange={ e => setNumber(e.target.value)} />
