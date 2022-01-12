@@ -38,3 +38,7 @@ body {
     align-items: center;
     text-align: center;
 }
+
+.notes {
+    text-align: left;
+}
