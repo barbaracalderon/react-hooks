@@ -43,6 +43,6 @@ npx create-react-app 'nome-do-app'
 npm i react-router-dom@5.2.0
 npm start
 ```
-[ANOTAÇÕES.md](https://github.com/barbaracalderon/react-hooks/blob/master/NOTES.md)
+[ANOTAÇÕES.md](https://github.com/barbaracalderon/react-hooks/blob/master/ANOTA%C3%87%C3%95ES.md)
 
 _Vem mais coisa. Carregando..._
