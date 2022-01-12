@@ -33,8 +33,6 @@ _This README.md file is in English and Portuguese. // Esse arquivo README.md est
  16. Custom Hooks #01
  17. Custom Hooks #02
 
-
-
 ## Caderno de Anotações
 
 ### No Powershell
@@ -45,4 +43,6 @@ npx create-react-app 'nome-do-app'
 npm i react-router-dom@5.2.0
 npm start
 ```
+[ANOTAÇÕES.md](https://github.com/barbaracalderon/react-hooks/blob/master/ANOTACOES.md)
+
 _Vem mais coisa. Carregando..._
