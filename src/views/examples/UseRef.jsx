@@ -5,11 +5,12 @@ import SectionTitle from "../../components/layout/SectionTitle"
 const UseRef = (props) => {
 
     const [value1, setValue1] = useState("")
+    const [value2, setValue2] = useState("")
     const count = useRef(0)
 
     useEffect(function () {
         count.current++
-    }, [value1])
+    }, [value1, value2])
 
 
     return (
@@ -29,6 +30,12 @@ const UseRef = (props) => {
             </div>
                 <input type="text" className="input"
                 value={value1} onChange={e => setValue1(e.target.value)} />
+            </div>
+
+            <SectionTitle title="#06 - Exercício" />
+            <div className="center">
+                <input type="text" className="input" 
+                value={value2} onChange={e => setValue2(e.target.value)}/>
             </div>
         </div>
     )
