@@ -116,5 +116,17 @@ Isso sana o problema inicial.
 
 O desafio era dizer se o número do input é par ou ímpar usando o `useEffect`. 
 
+## useRef
 
+Esse hook retorna um objeto mutável com uma propriedade chamada "current". O objeto tem dentro dele uma propriedade chamada "current" cujo valor é o seu estado.
+
+Ref é pela "referência". 
+
+No current podemos ter uma string, número, referência para um HTML, etc. Quando você altera o valor que está na propriedade current, isso não vai renderizar o componente na interface... e daí o fato de que é possível trabalhar com o count.current dentro do const `UseRef = props => {}`
+
+Isso vai funcionar sem problemas porque não irá causar uma nova renderização: **não vai no loop infinito de renderizações**. 
+
+Enquanto eu tiver renderizando o mesmo objeto (sem trocar de tela, por exemplo), esse hook useRef sempre retorna a mesma referência e assim consigo mexer no atributo current.
+
+No useState, cada vez que mexo no estado do componente, ele é renderizado na interface. **Aqui não acontece isso**: você troca o valor da propriedade current e isso não vai gerar uma nova renderização do componente.
 
