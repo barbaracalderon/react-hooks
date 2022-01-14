@@ -8,27 +8,19 @@ function calcFatorial(n) {
     return calcFatorial(n - 1) * n
 }
 
-function calcParImpar(n) {
-    if (n % 2 === 0) {
-        return 0 } else {
-            return 1
-        }
-}
-
 const UseEffect = (props) => {
 
     const [number, setNumber] = useState(1)
     const [fatorial, setFatorial] = useState(1)
+    const [status, setStatus] = useState('Impar')
 
     useEffect(function () {
         setFatorial(calcFatorial(number))
     }, [number])
 
-    const [numero, setNumero] = useState(0)
-
     useEffect(function () {
-        setNumero(calcParImpar(numero))
-    })
+        setStatus(number % 2 === 0 ? " Par" : " Ímpar")
+    }, [number])
 
     return (
         <div className="UseEffect">
@@ -45,11 +37,9 @@ const UseEffect = (props) => {
             onChange={ e => setNumber(e.target.value)} />
             <SectionTitle title="#04 - Desafio useEffect" />
             <div>
-                <span className="text">O número é:</span>
-                <span className="text red">{numero === 0 ? ' par' : ' ímpar'}</span>
+                <span className="text">Status:</span>
+                <span className="text red">{status}</span>
             </div>
-            <input type="number" className="input"
-            onChange={ e => setNumero(e.target.value)} />
         </div>
     )
 }

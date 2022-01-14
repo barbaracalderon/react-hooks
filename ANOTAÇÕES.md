@@ -60,6 +60,8 @@ O `useState` é o React Hook mais utilizado.
 
 Esse hook é utilizado para lidar com os efeitos colaterais que surgem.
 
+### Exercício 01
+
 No exercício, temos um input do tipo number que, dependendo do valor que tu escolhe, o fatorial é mostrado na tela. A ideia é criar um input do tipo number para vincular o estado a esse componente. Assim, quando modificar o input na tela, automaticamente é modificado o estado... e a interface reage à isso.
 
 
@@ -110,6 +112,9 @@ Sempre que o number modificar, eu quero chamar a função calcularFatorial passa
 
 Isso sana o problema inicial.
 
+### Exercício 02
+
+O desafio era dizer se o número do input é par ou ímpar usando o `useEffect`. 
 
 
 
