@@ -124,9 +124,41 @@ Ref é pela "referência".
 
 No current podemos ter uma string, número, referência para um HTML, etc. Quando você altera o valor que está na propriedade current, isso não vai renderizar o componente na interface... e daí o fato de que é possível trabalhar com o count.current dentro do const `UseRef = props => {}`
 
-Isso vai funcionar sem problemas porque não irá causar uma nova renderização: **não vai no loop infinito de renderizações**. 
-
-Enquanto eu tiver renderizando o mesmo objeto (sem trocar de tela, por exemplo), esse hook useRef sempre retorna a mesma referência e assim consigo mexer no atributo current.
+Isso vai funcionar sem problemas porque não irá causar uma nova renderização: **não vai no loop infinito de renderizações**. Enquanto eu tiver renderizando o mesmo objeto (sem trocar de tela, por exemplo), esse hook useRef sempre retorna a mesma referência e assim consigo mexer no atributo current.
 
 No useState, cada vez que mexo no estado do componente, ele é renderizado na interface. **Aqui não acontece isso**: você troca o valor da propriedade current e isso não vai gerar uma nova renderização do componente.
 
+# Exercício 01
+
+Criamos um contador que altera o valor do .current e mostra na tela sem renderizar a cada atualização.
+
+# Exercício 02
+
+Existe uma forma de você usar o useRef para conseguir pegar, por exemplo, um determinado elemento do HTML. Existe a propriedade `ref` que pode apontar para dentro de um objeto que representa uma referência. Isso é feito usando o useRef e colocando a propriedade "ref" no elemento HTML. 
+
+Nesse exercício, isso é feito.
+
+```javascript
+// UseRef.jsx
+const myInput1 = useRef(null)
+const myInput2 = userRef(null)
+
+// (Veja no código o original... aqui são apenas trechos)
+
+    </div>
+        <input type="text" className="input"
+        ref={myInput1}                                                  // REF aqui
+        value={value1} onChange={e => setValue1(e.target.value)} />
+    </div>
+
+    <SectionTitle title="#06 - Exercício" />
+    <div className="center">
+        <input type="text" className="input" 
+        ref={myInput2}                                                  // REF aqui
+        value={value2} onChange={e => setValue2(e.target.value)}/>
+    </div>
+```
+
+Uma vez que tu tem um atributo "REF" dentro do elemento JSX e aplicou dentro do par de chaves, interpolado, o objeto que tem um `.current`, automaticamente, o React vai colocar uma referência para esse input dentro do atributo `.current` desse objeto que é retornado pelo useRef. De tal forma que se eu pedir para ele imprimir o que tem dentro de `myInput1.current`, nesse caso a gente vai ver que inicialmente tem o valor nulo, que foi como determinamos no código. 
+
+Se começamos a escrever, ele muda e tem uma referência para o input. 
