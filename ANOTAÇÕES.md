@@ -60,7 +60,7 @@ O `useState` é o React Hook mais utilizado.
 
 Esse hook é utilizado para lidar com os efeitos colaterais que surgem.
 
-### Exercício 01
+### Exercício 03
 
 No exercício, temos um input do tipo number que, dependendo do valor que tu escolhe, o fatorial é mostrado na tela. A ideia é criar um input do tipo number para vincular o estado a esse componente. Assim, quando modificar o input na tela, automaticamente é modificado o estado... e a interface reage à isso.
 
@@ -112,7 +112,7 @@ Sempre que o number modificar, eu quero chamar a função calcularFatorial passa
 
 Isso sana o problema inicial.
 
-### Exercício 02
+### Exercício 04
 
 O desafio era dizer se o número do input é par ou ímpar usando o `useEffect`. 
 
@@ -128,11 +128,11 @@ Isso vai funcionar sem problemas porque não irá causar uma nova renderização
 
 No useState, cada vez que mexo no estado do componente, ele é renderizado na interface. **Aqui não acontece isso**: você troca o valor da propriedade current e isso não vai gerar uma nova renderização do componente.
 
-# Exercício 01
+### Exercício 05
 
 Criamos um contador que altera o valor do .current e mostra na tela sem renderizar a cada atualização.
 
-# Exercício 02
+### Exercício 06
 
 Existe uma forma de você usar o useRef para conseguir pegar, por exemplo, um determinado elemento do HTML. Existe a propriedade `ref` que pode apontar para dentro de um objeto que representa uma referência. Isso é feito usando o useRef e colocando a propriedade "ref" no elemento HTML. 
 
@@ -162,3 +162,7 @@ const myInput2 = userRef(null)
 Uma vez que tu tem um atributo "REF" dentro do elemento JSX e aplicou dentro do par de chaves, interpolado, o objeto que tem um `.current`, automaticamente, o React vai colocar uma referência para esse input dentro do atributo `.current` desse objeto que é retornado pelo useRef. De tal forma que se eu pedir para ele imprimir o que tem dentro de `myInput1.current`, nesse caso a gente vai ver que inicialmente tem o valor nulo, que foi como determinamos no código. 
 
 Se começamos a escrever, ele muda e tem uma referência para o input. 
+
+## useMemo
+
+#
