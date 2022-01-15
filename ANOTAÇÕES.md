@@ -165,4 +165,38 @@ Se começamos a escrever, ele muda e tem uma referência para o input.
 
 ## useMemo
 
-#
+### Exercício 07
+
+Nesse exercício, temos 3 inputs. A soma dos dois primeiros aparece na tela com o número maior centralizado. 
+
+Vamos supor que esses dois primeiros inputs tenham demora qualquer na hora de somar os dados. O terceiro input só poderia ser alterado depois dos dois primeiros - o que resulta em demora. O hook `useMemo` vem para resolver esse tipo de problema. 
+
+_É possível também resolver o problema usando o `useEffect` e o `useState`. Mas para fins de aprendizado, focamos no `useMemo`._
+
+O useMemo tem dois parâmetros: o primeiro é uma função, e o segundo parâmetro é o array das dependências.
+
+```javascript
+function sum(n1, n2) {
+    const future = Date.now() + 2000
+    while(Date.now() < future) {} // Espera 2s.
+    return n1 + n2
+}
+
+const UseMemo = (props) => {
+
+    const [n1, setN1] = useState(0)
+    const [n2, setN2] = useState(0)
+    const [n3, setN3] = useState(0)
+
+    const result = useMemo( () => sum(n1, n2), [n1, n2] ) // Aqui 2 parâmetros
+    // parâmetro 1: função arrow
+    // parâmetro 2: array das dependências
+```
+
+Agora usamos o useMemo: o resultado da soma é memorizado. É o que o useMemo faz: ele armazena um valor, um resultado que foi feito anteriormente, calculado anteriormente, foi armazenado em uma variável. Esse **resultado só será chamado novamente caso os valores do qual ele depende (n1 e n2) sejam alterados**. 
+
+O input 3 fica livre porque a soma não depende de n3, apenas de n1 e n2. 
+
+Dessa forma, se agora clicar no input 1 e input 2, ainda acontecem as demoras... mas ao clicar no input 3, ele não mais precisa esperar pelos inputs anteriores. Isso porque temos esse valor da soma pré-calculado - é como se fosse um valor em cache. O n3 não é dependência, não faz parte do array de dependências.
+
+
