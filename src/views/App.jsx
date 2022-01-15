@@ -13,7 +13,7 @@ const App = props => {
     const [state, setState] = useState(data)
 
     return (
-    <DataContext.Provider value={ data }>
+    <DataContext.Provider value={ {state: state, setState: setState} }>
                 <div className="App">
                     <Router>
                         <Menu />
