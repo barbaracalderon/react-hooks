@@ -200,3 +200,27 @@ O input 3 fica livre porque a soma não depende de n3, apenas de n1 e n2.
 Dessa forma, se agora clicar no input 1 e input 2, ainda acontecem as demoras... mas ao clicar no input 3, ele não mais precisa esperar pelos inputs anteriores. Isso porque temos esse valor da soma pré-calculado - é como se fosse um valor em cache. O n3 não é dependência, não faz parte do array de dependências.
 
 
+## useCallback
+
+É similar ao useMemo mas aqui retorna uma função memorizada.
+
+### Exercício 08
+
+No exercício, temos 3 botões e o resultado da soma entre eles.
+
+A soma precisa ser renderizada na tela todas as vezes que um botão é clicado. No entanto, o botão não precisa ser renderizado a cada clique. Ou seja, nem tudo que está na tela precisa ser renderizado: no nosso caso, só nos interessa o resultado da soma dos valores. Para resolver isso, usamos o `useCallback` que evita que a função seja chamada a cada clique, ela é memorizada.
+
+```javascript
+// Original no UseCallback.jsx:
+    const [count, setCount] = useState(0)
+
+    const inc = useCallback(function (delta) {
+        setCount(current => current + delta)
+    }, [setCount])
+
+// No UseCallbackButtons.jsx:
+export default React.memo(UseCallbackButtons)
+```
+
+A função soma fica guardada dentro do hook `useCallback` que recebe dois parâmetros: uma função e o array de dependências. Para evitar que ela seja renderizada todas as vezes que o botão é clicado, no array de dependências entra o setCount. Se eu passar o count no array de dependências, o count se modifica sempre e chama a função o tempo todo que é modificado. O `setCount` porque ela só é criada uma única vez e não será modificada mais - por isso a dependência é sobre ela e o componente botão não será renderizado mais vezes.
+
