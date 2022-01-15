@@ -224,3 +224,16 @@ export default React.memo(UseCallbackButtons)
 
 A função soma fica guardada dentro do hook `useCallback` que recebe dois parâmetros: uma função e o array de dependências. Para evitar que ela seja renderizada todas as vezes que o botão é clicado, no array de dependências entra o setCount. Se eu passar o count no array de dependências, o count se modifica sempre e chama a função o tempo todo que é modificado. O `setCount` porque ela só é criada uma única vez e não será modificada mais - por isso a dependência é sobre ela e o componente botão não será renderizado mais vezes.
 
+## "Context API"
+
+Por que precisamos de algo como "Context API"?
+
+Porque os frameworks de componentes, como é o caso do React (e outros), existe uma árvore de componentes em que hierarquias são estabelecidas. As comunicações diretas e indiretas entre componentes dependem dos elementos na hierarquia, de modo que eu às vezes preciso envolver determinados componentes para conseguir chegar no componente final, com o qual desejo me comunicar. É desnecessário envolvê-los - e envolvê-los torna tudo muito complexo.
+
+_Imagina que essa árvore é gigante... o tamanho do problema e complexidade._
+
+Nesse caso não faz sentido comunicação direta e indireta porque a complexidade é muito alta.
+
+Melhor que isso é criar um **contexto fora dessa árvore em que dados possam ser acessados e manipulados por qualquer componente** na árvore. Grosso modo, esse é o **Context API**. 
+
+Context API e hooks normalmente são usados juntos.
