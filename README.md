@@ -15,15 +15,15 @@ _This README.md file is in English and Portuguese. // Esse arquivo README.md est
 
  **CONTEÚDOS**
 
- 1. useState #01
- 2. useState #02
- 3. useEffect
- 4. Desafio useEffect
- 5. useRef #01
- 6. useRef #02
- 7. Desafio função Merge
- 8. useMemo
- 9. useCallback
+ 1. useState #01 - OK
+ 2. useState #02 - OK
+ 3. useEffect - OK
+ 4. Desafio useEffect - OK
+ 5. useRef #01 - OK
+ 6. useRef #02 - OK
+ 7. Desafio função Merge - OK
+ 8. useMemo - OK
+ 9. useCallback - OK
  10. Context API
  11. useContext #01
  12. useContext #02
