@@ -24,8 +24,8 @@ _This README.md file is in English and Portuguese. // Esse arquivo README.md est
  7. Desafio função Merge - OK
  8. useMemo - OK
  9. useCallback - OK
- 10. Context API
- 11. useContext #01
+ 10. Context API - OK
+ 11. useContext #01 - OK
  12. useContext #02
  13. useReducer #01
  14. Desafio useReducer
