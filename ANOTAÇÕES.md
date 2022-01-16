@@ -380,3 +380,9 @@ Assim gerenciamos o estado da aplicação. Esse estado é mais complexo porque r
 O nome `dispatcher` é uma convenção, é a função que é "disparada" para fazer as alterações no estado.
 
 O `useReducer` é uma alternativa ao `useState`. Este último é usado mais em objetos simples, valores primitivos. Quando se tem um objeto mais complexo, com várias formas de se mexer no seu estado, usamos o useReducer. Assim, organizamos o estado da aplicação de forma complexa mas que traz uma simplificação na manutenção.
+
+### Exercício 12
+
+No exercício 12, busca-se maior organização dos arquivos.
+
+Novos arquivos são criados e funções movidas. Por essa razão, códigos aqui no ANOTAÇÕES podem ficar diferentes a partir deste exercício em diante - porque alterações de organização são feitas aqui.
