@@ -1,18 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 import DataContext from '../../data/DataContext'
 import SectionTitle from '../../components/layout/SectionTitle'
+import { AppContext } from '../../data/Store'
 
 const UseContext = (props) => {
 
-    const context = useContext(DataContext)
+    const {state, setState } = useContext(DataContext)
 
     function changeNumber(delta) {
-        context.setState({
-            ...context.state, 
-            number: context.state.number + delta
+        setState({
+            ...state, 
+            number: state.number + delta
         })
     }
+
+    const  { number, setNumber, text, setText } = useContext(AppContext)
+
+    useEffect(function () {
+        if(number > 1250) {
+            setText('Valor altão!')
+        }
+    }, [number])
 
     return (
         <div className="UseContext">
@@ -22,19 +31,30 @@ const UseContext = (props) => {
             />
             <SectionTitle title="#09 - Exercício" />
             <div className="center">
-                <span className="text">{ context.state.text }</span>
-                <span className="text"> { context.state.number }</span>
+                <span className="text">{ state.text }</span>
+                <span className="text"> { state.number }</span>
 
-            <div>
-                <button className="btn" onClick={ e => {changeNumber(-1)}}>
-                    -1
-                </button>
-                <button className="btn" onClick={ e => {changeNumber(+1)}}>
-                    +1
-                </button>
+                <div>
+                    <button className="btn" onClick={ e => {changeNumber(-1)}}>
+                        -1
+                    </button>
+                    <button className="btn" onClick={ e => {changeNumber(+1)}}>
+                        +1
+                    </button>
+                </div>
             </div>
 
+            <SectionTitle title="#10 - Exercício" />
+            <div className="center">
+                <span className="text">{ text } </span>
+                <span className="text">{ number }</span>
+                <div>
+                    <button className="btn" onClick={ () => setNumber(number - 1)}>-1</button>
+                    <button className="btn" onClick={ () => setNumber(number + 1)}>+1</button>
+                </div>
+            
             </div>
+
         </div>
     )
 }
