@@ -378,3 +378,5 @@ const UseReducer = (props) => {
 Assim gerenciamos o estado da aplicação. Esse estado é mais complexo porque recebe um objeto com alguns atributos. Normalmente, é usado o atributo de nome `payload`... que é um objeto com todos os dados a serem modificados do estado.
 
 O nome `dispatcher` é uma convenção, é a função que é "disparada" para fazer as alterações no estado.
+
+O `useReducer` é uma alternativa ao `useState`. Este último é usado mais em objetos simples, valores primitivos. Quando se tem um objeto mais complexo, com várias formas de se mexer no seu estado, usamos o useReducer. Assim, organizamos o estado da aplicação de forma complexa mas que traz uma simplificação na manutenção.
