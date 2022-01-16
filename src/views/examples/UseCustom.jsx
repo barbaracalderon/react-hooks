@@ -31,7 +31,7 @@ const UseRef = (props) => {
             <SectionTitle title="#14 - Exercício" />
             <div className="cent">
                 <ul>
-                    {!response.loading? showStates(response.data) : false}
+                    {response.data ? showStates(response.data) : false}
                 </ul>
             </div>
         </div>
