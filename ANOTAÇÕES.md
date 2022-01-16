@@ -391,6 +391,8 @@ Novos arquivos são criados e funções movidas. Por essa razão, códigos aqui 
 
 Nessa parte, é ensinado como criar o seu próprio hook. 
 
+### Exercício 13
+
 No caso, escolhemos fazer um hook contador que chamamos de `useCounter` - retorna três valores: count, inc, dec.
 
 Criou-se uma pasta chamada hooks, onde foi criado o arquivo `useCounter.js` que contém a função useCounter. É possível dentro de um hook, da função, usar outros hooks... no caso usamos o useState. O contador terá um valor inicial, uma função de incrementar 1 unidade e uma outra função de decrementar 1 unidade. 
@@ -436,3 +438,7 @@ No arquio do useCustom.jsx, nós injetamos esse contador. Ele é o exercício 12
     )
 }
 ```
+
+### Exercício 14
+
+Foi criado um hook chamado useFetch para capturar dados de uma API do Cod3r para mostrar os estados brasileiros e suas siglas.
