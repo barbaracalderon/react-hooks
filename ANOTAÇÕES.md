@@ -289,3 +289,92 @@ Pra modificar o valor das chaves do objeto, precisa ter cuidado pra não mudar t
     }
 ```
 O contexto sobrevive a aplicação inteira: se sair de outra tela e voltar, o contexto ainda é válido. Se der refresh/atualizar a página, ele reinicia com o valor inicial. Lembrando que é acessível a todos os componentes da aplicação.
+
+## useReducer
+
+Tem relação forte com o Redux.
+
+Provavelmente o useReducer existe em React, com esse nome reducer, porque a comunidade usou por muito tempo o React junto com o Redux. Dentro do Redux, usa-se um reducer. O Redux é a implementação de um padrão, chamado Flux. Devido a essa fonte de inspiração e histórico de uso da comunidade do React, hoje existe o hook chamado `useReducer` inspirado no reducer usado no Redux. Se não fosse isso, provavelmente não usariam esse nome "reducer" para o hook. 
+
+Só pra lembrar que o Redux é uma biblioteca de gerenciamento de estados.
+
+### Exercício 11
+
+Inicialmente, criamos um estado inicial. Imaginemos que a nossa aplicação é um e-commerce que tem carrinho, usuário, lista de produtos, número de quantidade, etc. Inicialmente, esses atributos iniciam com zero ou vazios... e a medida que ele vai evoluindo, o useReducer gerencia o estado desse objeto inicial.
+
+O useReducer faz o gerenciamento do estado inicial por meio de uma função que chamaremos de `reducer`. Essa função recebe dois parâmetros: o primeiro, o estado atual; o segundo parâmetro é a função `action` em que definimos o `como` vai evoluir o estado. Quem gerencia tudo isso é a função `reducer`. 
+
+O `action` sempre tem, pelo menos, o atributo "tipo"... que é o `type`. E também temos um retorno padrão;
+
+O objetivo da função `reducer` é **pegar o estado atual e, para cada ação que for acontecendo, ele vai evoluir o estado alterando algum atributo dele**. No nosso caso inicial, o estado atual é o initialState e a única alteração que fizemos até agora é adicionar 2 ao number.
+
+Fica assim, por enquanto, o código:
+
+```javascript
+// UseReducer.jsx
+
+const initialState = {
+    cart: [],
+    products: [],
+    user: null,
+    number: 0
+}
+
+function reducer(state, action) {
+    switch(action.type) {                   // Podia ser um if/else
+        case 'numberAdd2':
+            return {
+            ...state,
+            number: state.number + 2
+        }
+        case 'login':
+            return {
+                ...state,
+                user: {name: action.payload} }
+        default:
+            return state
+    }
+}
+```
+
+Assim criamos o layout do exercício 11 que vai mostrar o atributo dos estados atuais. Fizemos um botão +2 para aumentar o contador e também um botão de login que, quando clicado, dispara o nome que está definido no estado.
+
+O `useReducer` recebe dois parâmetros: a função que gerencia o estado; e o segundo parâmetro é o estado inicial da aplicação.
+
+```javascript
+// UseReducer.jsx
+const UseReducer = (props) => {
+    const [state, dispatch] = useReducer(reducer, initialState) // 2 parãmetros
+    return (
+            <div className="UseReducer">
+                <PageTitle
+                    title="Hook UseReducer"
+                    subtitle="Uma outra forma de ter estado em componentes funcionais!"
+                />
+                <SectionTitle title="#11 - Exercícío" />
+                <div className="center">
+                    { state.user ? 
+                        <span className="text"> { state.user.name } </span>
+                        : <span className="text">Sem usuário</span>
+                    }
+
+                    <span className="text">{ state.number }</span>
+                    <div>
+
+                        <button className="btn"
+                        onClick={ () => dispatch( { type: 'login', payload: 'Barbara Calderon' })}>Login</button>
+
+                        <button className="btn" 
+                        onClick={ () => dispatch({type: 'numberAdd2'})}>
+                            +2
+                        </button>
+                    </div>
+                </div>
+            </div>
+    )
+}
+```
+
+Assim gerenciamos o estado da aplicação. Esse estado é mais complexo porque recebe um objeto com alguns atributos. Normalmente, é usado o atributo de nome `payload`... que é um objeto com todos os atributos a serem modificados do estado.
+
+O nome `dispatcher` é uma convenção, é a função que é "disparada" para fazer as alterações no estado.
