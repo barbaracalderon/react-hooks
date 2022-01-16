@@ -26,9 +26,9 @@ _This README.md file is in English and Portuguese. // Esse arquivo README.md est
  9. useCallback - OK
  10. Context API - OK
  11. useContext #01 - OK
- 12. useContext #02
- 13. useReducer #01
- 14. Desafio useReducer
+ 12. useContext #02 - OK
+ 13. useReducer #01 - OK
+ 14. Desafio useReducer - OK
  15. useReducer #02
  16. Custom Hooks #01
  17. Custom Hooks #02
