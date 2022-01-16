@@ -237,3 +237,55 @@ Nesse caso não faz sentido comunicação direta e indireta porque a complexidad
 Melhor que isso é criar um **contexto fora dessa árvore em que dados possam ser acessados e manipulados por qualquer componente** na árvore. Grosso modo, esse é o **Context API**. 
 
 Context API e hooks normalmente são usados juntos.
+
+### Exercício 09
+
+Primeiro criamos um arquivo Javascript em que criamos o `DataContext.js` e alocamosm o objeto `data`. Também criamos o `DataContext` por meio do `React.createContext(data)`: é um objeto de contexto criado a partir do CreateContext com o objeto data.
+
+```javascript
+//DataContext.js
+import React from 'react'
+
+export const data = {
+    number: 100,
+    text: 'Context API'
+}
+const DataContext = React.createContext(data)
+
+export default DataContext
+```
+
+O hook UseContext aceita o objeto de contexto e retorna o valor atual do contexto. 
+
+O DataContext precisa estar presente no componente mais "alto" da árvore, que é o componente `<App />`. Também poderíamos colocar no `index.js` que é onde injetamos toda a nossa aplicação. Mas no exercício fizemos pelo App mesmo.
+
+```javascript
+// App.jsx
+const App = props => {
+
+    const [state, setState] = useState(data)
+
+    return (    // Aqui embaixo tá o DataContext
+    <DataContext.Provider value={ {state: state, setState: setState} }> 
+                <div className="App">
+                    <Router>
+                        <Menu />
+                        <Content />
+                    </Router>
+                </div>
+        </DataContext.Provider>     // Termina aqui: envolve toda a aplicação
+    )       // Todos os componentes tem acesso ao DataContext
+}
+```
+Pra modificar o valor das chaves do objeto, precisa ter cuidado pra não mudar todo o objeto  - e não apenas a chave desejada. Nesse caso, o "destructuring" do Javascript é bem-vindo pra resolver o problema:
+
+```javascript
+//UseContext.jsx
+    function changeNumber(delta) {
+        context.setState({
+            ...context.state,           // destructuring aqui
+            number: context.state.number + delta    // só altera isso
+        })
+    }
+```
+O contexto sobrevive a aplicação inteira: se sair de outra tela e voltar, o contexto ainda é válido. Se der refresh/atualizar a página, ele reinicia com o valor inicial. Lembrando que é acessível a todos os componentes da aplicação.
