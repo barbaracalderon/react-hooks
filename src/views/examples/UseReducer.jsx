@@ -49,6 +49,8 @@ const UseReducer = (props) => {
                         </button>
                     </div>
                 </div>
+                <SectionTitle title="#12 - Exercícío" />
+                <span className="text">Reorganização das pastas e funções.</span>
             </div>
     )
 }
