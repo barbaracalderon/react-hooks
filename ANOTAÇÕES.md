@@ -386,3 +386,53 @@ O `useReducer` é uma alternativa ao `useState`. Este último é usado mais em o
 No exercício 12, busca-se maior organização dos arquivos.
 
 Novos arquivos são criados e funções movidas. Por essa razão, códigos aqui no ANOTAÇÕES podem ficar diferentes a partir deste exercício em diante - porque alterações de organização são feitas aqui.
+
+## useCustom (criar próprio hook)
+
+Nessa parte, é ensinado como criar o seu próprio hook. 
+
+No caso, escolhemos fazer um hook contador que chamamos de `useCounter` - retorna três valores: count, inc, dec.
+
+Criou-se uma pasta chamada hooks, onde foi criado o arquivo `useCounter.js` que contém a função useCounter. É possível dentro de um hook, da função, usar outros hooks... no caso usamos o useState. O contador terá um valor inicial, uma função de incrementar 1 unidade e uma outra função de decrementar 1 unidade. 
+
+```javascript
+//useCounter.js
+import {useState} from 'react'
+
+export const useCounter = (initialValue=50) => {
+    const [count, setCount] = useState(initialValue)
+    function inc() {
+        setCount(count + 1)
+    }
+    function dec() {
+        setCount(count - 1)
+    }
+    return [count, inc, dec]
+}
+```
+
+No arquio do useCustom.jsx, nós injetamos esse contador. Ele é o exercício 12. 
+
+```javascript
+// UseCustom.jsx
+
+    const [count, inc, dec] = useCounter(60)
+
+    return (
+        <div className="UseCustom">
+            <PageTitle
+                title="Seu Hook"
+                subtitle="Vamos aprender como criar o nosso próprio Hook!"
+            />
+            <SectionTitle title="#13 - Exercício" />
+            <div className="center">
+                <span className="text"> { count } </span>
+                <div>
+                    <button className="btn" onClick={ e => dec() }> -1 </button>
+                    <button className="btn" onClick={ e => inc() }> +1 </button>
+                </div>
+            </div>
+        </div>
+    )
+}
+```
