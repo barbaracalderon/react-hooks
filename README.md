@@ -44,3 +44,7 @@ npm start
 [ANOTAÇÕES.md](https://github.com/barbaracalderon/react-hooks/blob/master/ANOTA%C3%87%C3%95ES.md)
 
 _Mais informações sobre os códigos e os hooks no link acima, caderno de anotações._
+
+## Documentação React Hooks
+
+[React Hooks ](https://pt-br.reactjs.org/docs/hooks-intro.html)
