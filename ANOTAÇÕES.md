@@ -442,3 +442,5 @@ No arquio do useCustom.jsx, nós injetamos esse contador. Ele é o exercício 12
 ### Exercício 14
 
 Foi criado um hook chamado useFetch para capturar dados de uma API do Cod3r para mostrar os estados brasileiros e suas siglas.
+
+_Fim._
