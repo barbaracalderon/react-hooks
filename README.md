@@ -1,5 +1,3 @@
-_This README.md file is in English and Portuguese. // Esse arquivo README.md está em Inglês e Português._
-
 # React.js - Aplicação com React Hooks
 
 ##  _Aplicação simples para aprender e praticar **React Hooks**._
