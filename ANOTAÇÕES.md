@@ -14,7 +14,7 @@ Por que trabalhar com hooks?
 
 Dentro do React temos componentes baseados em classe e funções. É mais interessante trabalhar com componentes funcionais porque além da sintaxe ser mais enxuta, o Javascript é focado fundamentalmente em funções. Até existem classes em JS, mas ela mesma é uma forma diferente de escrever uma função.
 
-Como React é um framework que se baseia em JS, nada mais natural que ele se direcione para as funções. Os hooks são funções. Faz todo o sentido aprender hooks e trabalhar com eles.
+Como React é uma biblioteca que se baseia em JS, nada mais natural que ele se direcione para as funções. Os hooks são funções. Faz todo o sentido aprender hooks e trabalhar com eles.
 
 ## useState
 
@@ -40,7 +40,7 @@ As expressões acima significam o seguinte: quando eu clicar no botão `()` ent�
 
 Isso só vai acontecer quando eu clicar.
 
-Pelo React, eu não altero o estado diretamente - eu altero o estado por meio do setcounter: primeiro eu altero o dado e a interface vai **reagir** a essa mudança.
+Pelo React, eu não altero o estado diretamente - eu altero o estado por meio do setCounter: primeiro eu altero o dado e a interface vai **reagir** a essa mudança.
 
 ### Exercício #02
 
@@ -52,7 +52,7 @@ Esses componentes controlados refletem o estado do componente. O ciclo no React 
 
 Para alterar o estado de um componente **é preciso capturar um evento**. 
 
-Valor nulo torna o componente não controlado: o componente não tem vinculação com nenhum estado. Não tem muito sentido... porque precisamos de um componente controlado para fazer a leitura dos dados por meio da captura de um evento. Via de regra, nao trabalhamos com componentes controlados.
+Valor nulo torna o componente um não-controlado: o componente não tem vinculação com nenhum estado. Não tem muito sentido... porque precisamos de um componente controlado para fazer a leitura dos dados por meio da captura de um evento. Via de regra, não trabalhamos com componentes não-controlados.
 
 O `useState` é o React Hook mais utilizado.
 
@@ -62,7 +62,7 @@ Esse hook é utilizado para lidar com os efeitos colaterais que surgem.
 
 ### Exercício 03
 
-No exercício, temos um input do tipo number que, dependendo do valor que tu escolhe, o fatorial é mostrado na tela. A ideia é criar um input do tipo number para vincular o estado a esse componente. Assim, quando modificar o input na tela, automaticamente é modificado o estado... e a interface reage à isso.
+No exercício, temos um input do tipo number que, dependendo do valor que tu escolhe, o fatorial é mostrado na tela. A ideia é criar um input de type number para vincular o estado a esse componente. Assim, quando modificar o input na tela, automaticamente é modificado o estado... e a interface reage à isso.
 
 
 ```javascript
@@ -76,7 +76,7 @@ onChange={ e => setNumber(e.target.value)} />
 
 ```
 
-A partir do evento click do mouse no input `(e)` eu altero `=>` o estado do number, setando ele `setNumber(e.target.value)`. 
+A partir do evento click do mouse no input `e` eu altero `=>` o estado do number, setando ele `setNumber(e.target.value)`. 
 
 Em seguida, quero mostrar o resultado do fatorial. A função do fatorial é essa aqui e fica fora da função UseEffect (por acaso é chamado desse nome, mas não se trata do hook).
 
@@ -96,7 +96,11 @@ Só que eu não posso fazer isso.
 
 Sempre que você chama o `setFatorial`, ele vai renderizar o componente de forma infinita. O React dá um warning (aviso) informando o problema: ele fica executando várias vezes no browser a renderização, atingindo um número limite. Isso acontece pelo laço infinito. 
 
-Isso porque sempre que você entra dentro do componente e você altera o estado diretamente do componente, ele vai renderizar o componente de novo. E você alterou de novo o estado. E ele vai renderizar de novo... e isso é um laço infinito. **Isso aqui é o que chamamos de "side effect" (efeito colateral)**. E é isso que acontece: o number alterou e eu quero recalcular fatorial... porque o fatorial depende do number.
+Isso porque sempre que você entra dentro do componente e você altera o estado diretamente do componente, ele vai renderizar o componente de novo. E você alterou de novo o estado. E ele vai renderizar de novo... e isso é um laço infinito. 
+
+**Isso aqui é o que chamamos de "side effect" (efeito colateral)**. 
+
+E é isso que acontece: o number alterou e eu quero recalcular fatorial... porque o fatorial depende do number.
 
 Pra resolver isso... usamos o hook useEffect.
 
@@ -122,7 +126,7 @@ Esse hook retorna um objeto mutável com uma propriedade chamada "current". O ob
 
 Ref é pela "referência". 
 
-No current podemos ter uma string, número, referência para um HTML, etc. Quando você altera o valor que está na propriedade current, isso não vai renderizar o componente na interface... e daí o fato de que é possível trabalhar com o count.current dentro do const `UseRef = props => {}`
+No current podemos ter uma string, número, referência para um HTML, etc. Quando você altera o valor que está na propriedade current, isso não vai renderizar o componente na interface... e daí o fato de que é possível trabalhar com o `count.current` dentro do const `UseRef = props => {}`
 
 Isso vai funcionar sem problemas porque não irá causar uma nova renderização: **não vai no loop infinito de renderizações**. Enquanto eu tiver renderizando o mesmo objeto (sem trocar de tela, por exemplo), esse hook useRef sempre retorna a mesma referência e assim consigo mexer no atributo current.
 
