@@ -5,7 +5,7 @@
 
  ⚠️ _Esta aplicação está sendo criada enquanto eu sigo o projeto "Hooks" do curso de React e Redux do Leonardo Moura Leitão. O curso está [disponível na Udemy aqui](https://www.udemy.com/course/react-redux-pt/). Essa aplicação inicia-se com uma pasta SRC com conteúdos iniciais. A partir dela, novas criações. Esse é o início._  ⚠️
 
-  _Printscreen da versão atual (em construção) abaixo._
+  _Printscreen da versão final abaixo._
 
 ![hooks app](hooks.png)
 
